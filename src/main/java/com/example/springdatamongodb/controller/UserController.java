@@ -27,7 +27,7 @@ public class UserController {
      return ResponseEntity.ok(save);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<User> findUser(@PathVariable("id") Integer userId){
         final Optional<User> user = userRepository.findById(userId);
         if (user.isPresent())
@@ -44,6 +44,15 @@ public class UserController {
             userExist.setSalary(user.getSalary());
             final User UpdatedUser = userRepository.save(userExist);
             return ResponseEntity.ok(UpdatedUser);
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @DeleteMapping("deleteById/{id}")
+    public ResponseEntity<Integer> deleteUser(@PathVariable  Integer id){
+        final Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()){
+            userRepository.deleteById(id);
+            return ResponseEntity.ok(id);
         }
         return ResponseEntity.notFound().build();
     }

@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("Spring Boot REST API")
+        return new ApiInfoBuilder().title("Spring Boot MongoDB REST API")
                 .description("REST API")
                 .contact(new Contact("Hemant Kumar sahu", "www.hemantworld.net", "hemantjava90@gmail.com"))
                 .license("Apache 2.0")
